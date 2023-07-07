@@ -3,9 +3,10 @@
         <div class="posts">
             <div class="post" v-for="post in posts" :key="post.id">
                 <p class="title"><strong>{{ post.title }}</strong></p>
-                <p class="preview">{{ post.preview }}</p>
+                <p class="preview">{{ post.content }}</p>
                 <p class="author">{{ post.author }}</p>
             </div>
+
         </div>
     </div>
     <form @submit.prevent>
@@ -35,14 +36,12 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     data() {
         return {
-            posts: [
-                {id: 1, title: "Hello", preview: "Hello world!", author: "admin"},
-                {id: 2, title: "Post 2", preview: "Hello!", author: "ancapybara"},
-                {id: 3, title: "Post 3", preview: "Whats up?", author: "capybara"},
-            ],
+            posts: null,
             title: "",
             preview: "",
             author: ""
@@ -51,18 +50,31 @@ export default {
 
     methods: {
         createPost() {
-            const newPost = {
-                id: Date.now(),
-                title: this.title,
-                preview: this.preview,
-                author: this.author,
-            }
-            this.posts.push(newPost);
+            var postTitle = this.title;
+            var postContent = this.preview;
+            var postAuthor = this.author;
+            axios.post('http://localhost:8080/posts/create', {
+                title: postTitle,
+                content: postContent,
+                author: postAuthor
+            })
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
             this.title = "";
             this.preview = "";
             this.author = "";
         },
     
+    },
+
+    mounted() {
+        axios
+        .get("http://localhost:8080/posts/get/all")
+        .then(response => (this.posts = response.data))
     }
 }
 </script>
