@@ -1,0 +1,23 @@
+.yellow_btn {
+    background-color: $yellow;
+    color: $black;
+    text-align: center;
+    border: 1 px solid $black;
+    border-radius: 5px;
+    width: 150px;
+    height: 3em;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 18px;
+}
+.container {
+    width: 760px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 100%;
+}
+.input_default {
+    border: 0.2em solid $black;
+    padding: 10px;
+    border-radius: 5px;
+}

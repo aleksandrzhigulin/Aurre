@@ -1,0 +1,51 @@
+// Colors:
+$black: #303637;
+$yellow: #ffdd2d;
+$white: #EEF0F2;
+$totalwhite: #FFFFFF;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap');
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: $white;
+}
+
+header {
+    transform: all 3s;
+    transition: all 3s;
+    background-color: $totalwhite;
+    height: 80px;
+    .container {
+        display: flex;
+        justify-content: space-between;  
+        align-items: center;
+    }
+    
+    a {
+        margin: 0.25rem;
+        padding: 0.25rem;
+        border-radius: 5px;
+        transition: color 10s ease-in-out, box-shadow .3s ease-in-out;
+        text-decoration: none;
+        color: $black;
+        font-weight: 500;
+        font-size: 24px;
+    }
+
+    a:hover {
+        box-shadow: inset 300px 0 0 0 $yellow;
+        color: $black;
+    }
+
+    .user, .user__info {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .user__info {
+        font-weight: 700;
+        font-size: 24px;
+    }
+}
