@@ -1,6 +1,5 @@
 package com.ancapybara.aurre.Post;
 
-import com.ancapybara.aurre.Security.JWTManager;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import java.util.Optional;
 public class PostController {
     @Autowired
     ObjectMapper objectMapper = new ObjectMapper();
-    @Autowired
-    private JWTManager jwtManager;
     @Autowired
     private PostService postService;
     @Autowired
