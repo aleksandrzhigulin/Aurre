@@ -1,8 +1,6 @@
 package com.ancapybara.aurre.Security;
 
-import com.ancapybara.aurre.User.MyUserDetailsService;
 import com.ancapybara.aurre.User.User;
-import com.ancapybara.aurre.User.UserService;
 import com.nimbusds.jwt.SignedJWT;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
@@ -32,22 +30,6 @@ public class TokenService  {
         JwtClaimsSet claims = JwtClaimsSet.builder()
                 .issuer("self")
                 .issuedAt(now)
-                .subject(usrDetails.getUsername())
-                .claim("scope", scope)
-                .build();
-        return this.jwtEncoder.encode(JwtEncoderParameters.from(claims)).getTokenValue();
-    }
-
-    public String generateRefreshToken(User usrDetails) {
-        Instant now = Instant.now();
-        String scope = usrDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.joining(" "));
-
-        JwtClaimsSet claims = JwtClaimsSet.builder()
-                .issuer("self")
-                .issuedAt(now)
-                .expiresAt(now.plus(10, ChronoUnit.MINUTES))
                 .subject(usrDetails.getUsername())
                 .claim("scope", scope)
                 .build();

@@ -14,13 +14,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
+
 import java.util.Collections;
-import java.util.HashSet;
+
 import java.util.Set;
 
 @RestController
@@ -52,12 +52,11 @@ public class AuthController {
         try {
             authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
         } catch (BadCredentialsException e) {
-            return new ResponseEntity<>(new AuthResponse("Wrong password or username", null, null), HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(new AuthResponse("Wrong password or username", null), HttpStatus.UNAUTHORIZED);
         }
         User user = (User) myUserDetailsService.loadUserByUsername(username);
         String access_token = tokenService.generateAccessToken(user);
-        String refresh_token = tokenService.generateRefreshToken(user);
-        return new ResponseEntity<>(new AuthResponse("Success", access_token, refresh_token), HttpStatus.OK);
+        return new ResponseEntity<>(new AuthResponse("Success", access_token), HttpStatus.OK);
     }
 
     @PostMapping("auth/signup")
@@ -66,17 +65,16 @@ public class AuthController {
         String password = authRequest.getPassword();
         if (userRepository.findByUsername(username).isPresent()) {
             return new ResponseEntity<>(
-                    new AuthResponse("User exists", null, null), HttpStatus.UNAUTHORIZED
+                    new AuthResponse("User exists", null), HttpStatus.UNAUTHORIZED
             );
         }
         Role role = new Role("user");
         Set<Role> roles = Collections.singleton(role);
         User user = new User(username, bCryptPasswordEncoder.encode(password), roles);
         String accessToken = tokenService.generateAccessToken(user);
-        String refreshToken = tokenService.generateRefreshToken(user);
         roleCrudRepository.save(role);
         userService.saveUser(user);
-        return new ResponseEntity<>(new AuthResponse("Success", accessToken, refreshToken), HttpStatus.OK);
+        return new ResponseEntity<>(new AuthResponse("Success", accessToken), HttpStatus.OK);
     }
 
 
