@@ -28,6 +28,7 @@
 </template>
 
 <script>
+
 export default {
     props: {
         posts: {

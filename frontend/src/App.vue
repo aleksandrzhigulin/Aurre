@@ -1,15 +1,22 @@
 <template>
     <div class="app">
-        <Header></Header>
+        <AurreHeader></AurreHeader>
         <router-view></router-view>
     </div>
 </template>
 
 <script>
-import Header from '@/components/Header';
+import AurreHeader from '@/components/AurreHeader';
 export default {
     components: {
-        Header
+        AurreHeader
+    },
+    data() {
+        return {
+            isAuthorized: false,
+        }
+    },
+    mounted() {
     }
 }
 </script>

@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -37,10 +37,10 @@ export default {
 
     methods: {
         createPost() {
-            var postTitle = this.title;
-            var postContent = this.preview;
-            var postAuthor = this.author;
-            axios.post('http://localhost:8080/posts/create', {
+            var postTitle = this.post.title;
+            var postContent = this.post.preview;
+            var postAuthor = this.post.author;
+            this.axios.post('http://localhost:8080/posts/create', {
                 title: postTitle,
                 content: postContent,
                 author: postAuthor

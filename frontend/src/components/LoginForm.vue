@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -59,12 +59,14 @@ export default {
     },
     methods: {
         authorization() {
-            axios.post('http://localhost:8080/auth/login', {
+          this.axios.post('http://localhost:8080/auth/login', {
                 username: this.usernameAuth,
                 password: this.passwordAuth
             })
             .then(function (response) {
                 console.log(response.data.access_token);
+                setCookie("jwt", response.data.access_token, {secure: true, 'max-age': 31536000});
+                location.reload();
             })
             .catch(function (error) {
                 console.log(error);
@@ -73,12 +75,14 @@ export default {
             
         },
         registration() {
-            axios.post('http://localhost:8080/auth/signup', {
+          this.axios.post('http://localhost:8080/auth/signup', {
                 username: this.usernameRegistration,
                 password: this.passwordRegistration
             })
             .then(function (response) {
                 console.log(response.data.access_token);
+                setCookie("jwt", response.data.access_token, {secure: true, 'max-age': 31536000});
+                location.reload();
             })
             .catch(function (error) {
                 console.log(error);

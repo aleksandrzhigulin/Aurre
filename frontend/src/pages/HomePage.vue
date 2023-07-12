@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 
 import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
@@ -25,7 +24,7 @@ export default {
 
 
     mounted() {
-        axios
+        this.axios
         .get("http://localhost:8080/posts/get/all")
         .then(response => (this.posts = response.data))
     }
