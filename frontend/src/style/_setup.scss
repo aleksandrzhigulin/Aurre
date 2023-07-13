@@ -12,11 +12,10 @@ body {
 }
 
 header {
-    transform: all 3s;
     transition: all 3s;
     background-color: $totalwhite;
     height: 80px;
-    .container {
+    .container__wide {
         display: flex;
         justify-content: space-between;  
         align-items: center;

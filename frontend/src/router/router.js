@@ -1,9 +1,11 @@
 import login from '@/pages/LoginPage';
 import Home from "@/pages/HomePage";
 import Profile from "@/pages/ProfilePage";
-
+import AboutPage from "@/pages/AboutPage.vue";
+import CreatePostPage from "@/pages/CreatePostPage.vue";
 import { createWebHistory } from 'vue-router';
 import {createRouter} from "vue-router";
+
 const routes = [
     {
         path: '/',
@@ -20,6 +22,14 @@ const routes = [
     {
         path: '/profile',
         component: Profile
+    },
+    {
+        path: '/about',
+        component: AboutPage
+    },
+    {
+        path: '/createPost',
+        component: CreatePostPage
     }
 ]
 

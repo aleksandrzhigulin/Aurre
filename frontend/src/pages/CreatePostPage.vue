@@ -1,8 +1,30 @@
 <template>
-    <div class="container">
-        <form action="">
-            <input type="text">
-            <ul>New element</ul>
+    <div class="container newPost">
+        <form @submit.prevent>
+            <div class="post-create__element">
+              <p class="post-create__element-header">Title</p>
+              <input type="text" class="text__input" v-model="title">
+            </div>
+
+           <div class="post-create__element">
+            <p class="post-create__element-header">Preview</p>
+            <input type="file" accept="image/*" @change="onFileChange">
+             <img v-if="url" :src="url"/>
+           </div>
+            <div class="new__element-btn dropdown">
+              <button class="dropbtn" @click="myFunction"><i class="fa-solid fa-plus"></i>New element</button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="#">Text</a>
+                <a href="#">Image</a>
+              </div>
+            </div>
+
+
+            <div class="form__btns">
+              <button class="yellow_btn">Save</button>
+              <button class="yellow_btn">Publish</button>
+            </div>
+
         </form>
     </div>
 </template>
@@ -12,7 +34,31 @@ export default {
     data() {
         return {
             title: "",
+            url: null
         }
+    },
+  methods: {
+    onFileChange(e) {
+      const file = e.target.files[0];
+      this.url = URL.createObjectURL(file);
+    },
+    myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
     }
+  }
+}
+
+// Close the dropdown menu if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
 }
 </script>

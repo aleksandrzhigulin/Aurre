@@ -1,0 +1,21 @@
+.newPost {
+  background: white;
+  padding: 15px;
+  margin-top: 30px;
+  border-radius: 15px;
+
+  form {
+    input.text__input {
+      width: 100%;
+      border: 3px solid $black;
+      height: 40px;
+      padding: 5px;
+      font-size: 22px;
+    }
+  }
+}
+.post-create__element-header {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 38px;
+}

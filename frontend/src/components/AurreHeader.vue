@@ -1,14 +1,15 @@
 <template>
     <header>
-        <div class="container">
+        <div class="container__wide">
             <div class="pages">
                 <router-link to="/">Home</router-link>
+                <router-link to="/about">About (for HRs)</router-link>
                 <router-link to="/auth" v-if="!(this.isAuthorized)">Sign in/up</router-link>
                 <a v-on:click.prevent="delCookie()" v-if="this.isAuthorized" style="cursor: pointer;">Logout</a>
             </div>
             <div class="user" v-if="this.isAuthorized">
                 <div class="user__actions">
-                    <a href="">Write a post</a>
+                  <router-link to="/createPost">Create post</router-link>
                 </div>
                 <div class="user__info">
                     <div class="user__avatar">
