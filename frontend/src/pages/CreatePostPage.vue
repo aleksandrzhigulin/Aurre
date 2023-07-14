@@ -14,12 +14,14 @@
             <div class="new__element-btn dropdown">
               <button class="dropbtn" @click="myFunction"><i class="fa-solid fa-plus"></i>New element</button>
               <div id="myDropdown" class="dropdown-content">
-                <a href="#">Text</a>
+                <a href="#" @click="addTextInstance">Text</a>
                 <a href="#">Image</a>
               </div>
             </div>
 
-
+            <div class="custom__elements" id="custom__elements" v-for="component in components" :key="component.id">
+              <PostComponent :component_type="component.type"></PostComponent>
+            </div>
             <div class="form__btns">
               <button class="yellow_btn">Save</button>
               <button class="yellow_btn">Publish</button>
@@ -30,12 +32,19 @@
 </template>
 
 <script>
+//import {defineComponent, createApp} from "vue";
+import PostComponent from "@/components/PostComponent.vue";
+import PostComponentClass from "@/models/PostComponentClass.js";
 export default {
     data() {
         return {
             title: "",
-            url: null
+            url: null,
+            components: []
         }
+    },
+    components: {
+      PostComponent
     },
   methods: {
     onFileChange(e) {
@@ -44,7 +53,13 @@ export default {
     },
     myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
+    },
+
+    addTextInstance() {
+      const new_component = new PostComponentClass(1, "text");
+      this.components.push(new_component);
     }
+
   }
 }
 

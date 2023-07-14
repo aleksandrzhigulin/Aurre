@@ -2,6 +2,8 @@ package com.ancapybara.aurre.Post;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -18,6 +20,9 @@ public class Post {
     private String content;
 
     private String author;
+
+    @ManyToMany
+    private List<PostComponent> components;
 
     public Long getId() {
         return id;
@@ -60,6 +65,22 @@ public class Post {
         this.title = title;
         this.content = content;
         this.author = author;
+        this.components = new ArrayList<>();
+    }
+
+    public Post(String title, String content, String author, List<PostComponent> components) {
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.components = components;
+    }
+
+    public List<PostComponent> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<PostComponent> components) {
+        this.components = components;
     }
 
     @Override
