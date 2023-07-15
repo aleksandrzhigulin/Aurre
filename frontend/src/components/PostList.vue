@@ -1,6 +1,6 @@
 <template>
     <div class="posts">
-        <div class="post" v-for="post in posts.slice().reverse()" :key="post.id">
+        <div class="post" v-for="post in posts" :key="post.id">
             <div class="post__header">
                <p class="title">{{ post.title }}</p> 
             </div>
