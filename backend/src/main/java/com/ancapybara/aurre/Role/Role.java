@@ -1,10 +1,8 @@
 package com.ancapybara.aurre.Role;
 
-import com.ancapybara.aurre.User.User;
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
-import java.util.Set;
 
 @Entity
 @Table(name = "roles")
