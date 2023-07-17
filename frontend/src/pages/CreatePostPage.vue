@@ -14,7 +14,7 @@
 
 
             <div class="custom__elements" id="custom__elements" v-for="component in components" :key="component.id">
-              <PostComponent :component_type="component.type" @edit="onComponentChange"></PostComponent>
+              <PostComponent :id="component.id" :component_type="component.type" @edit="onComponentChange"></PostComponent>
             </div>
 
           <div class="new__element-btn dropdown">
