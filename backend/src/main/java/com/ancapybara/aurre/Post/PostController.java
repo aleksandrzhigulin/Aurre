@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -18,6 +19,9 @@ public class PostController {
     private PostService postService;
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private PostComponentRepository postComponentRepository;
 
     @GetMapping("/posts/get/all")
     public ResponseEntity<String> getAllPosts() throws JsonProcessingException {
@@ -39,9 +43,12 @@ public class PostController {
     @PostMapping("/posts/create")
     public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest) throws JsonProcessingException {
         String title = postRequest.getTitle();
-        String content = postRequest.getContent();
         String author = postRequest.getAuthor();
-        Post post = postRepository.save(new Post(title, content, author));
+        List<PostComponent> postComponents = postRequest.getComponents();
+        for (PostComponent component : postComponents) {
+            postComponentRepository.save(component);
+        }
+        Post post = postRepository.save(new Post(title, author, postComponents));
         String json = objectMapper.writeValueAsString(post);
         return ResponseEntity.ok(json);
     }

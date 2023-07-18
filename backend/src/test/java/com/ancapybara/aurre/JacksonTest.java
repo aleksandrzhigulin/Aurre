@@ -14,7 +14,7 @@ public class JacksonTest {
 
     @Test
     void pojoToJsonString() throws JsonProcessingException {
-        Post post = new Post("Hello", "Hello world!", "Ancapybara");
+        Post post = new Post("Hello", "Hello world!");
         String json = objectMapper.writeValueAsString(post);
         System.out.println(json);
     }
@@ -22,8 +22,8 @@ public class JacksonTest {
     @Test
     void pojoArrayToJsonString() throws JsonProcessingException {
         List<Post> arr = new ArrayList<>();
-        Post post = new Post("Hello", "Hello world!", "Ancapybara");
-        Post post1 = new Post("Hello world", "Hello world", "admin");
+        Post post = new Post("Hello", "Hello world!");
+        Post post1 = new Post("Hello world", "Hello world");
         arr.add(post);
         arr.add(post1);
         System.out.println(objectMapper.writeValueAsString(arr));

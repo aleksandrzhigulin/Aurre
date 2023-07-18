@@ -34,6 +34,7 @@ export default {
     methods: {
         delCookie() {
             deleteCookie("jwt");
+            deleteCookie("username");
             location.reload();
         }
     },

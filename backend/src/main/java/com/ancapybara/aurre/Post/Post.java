@@ -16,9 +16,6 @@ public class Post {
     @Column(name = "Title")
     private String title;
 
-    @Column(name = "Content")
-    private String content;
-
     private String author;
 
     @ManyToMany
@@ -36,13 +33,6 @@ public class Post {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
     public String getAuthor() {
         return author;
     }
@@ -53,24 +43,20 @@ public class Post {
     public Post() {
         this.title = null;
         this.author = null;
-        this.content = null;
     }
-    public Post(String title, String content) {
+    public Post(String title) {
         this.title = title;
-        this.content = content;
         this.author = "unknown";
     }
 
-    public Post(String title, String content, String author) {
+    public Post(String title, String author) {
         this.title = title;
-        this.content = content;
         this.author = author;
         this.components = new ArrayList<>();
     }
 
-    public Post(String title, String content, String author, List<PostComponent> components) {
+    public Post(String title, String author, List<PostComponent> components) {
         this.title = title;
-        this.content = content;
         this.author = author;
         this.components = components;
     }
@@ -88,12 +74,12 @@ public class Post {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Post post = (Post) o;
-        return Objects.equals(getId(), post.getId()) && Objects.equals(getTitle(), post.getTitle()) && Objects.equals(getContent(), post.getContent()) && Objects.equals(getAuthor(), post.getAuthor());
+        return Objects.equals(getId(), post.getId()) && Objects.equals(getTitle(), post.getTitle()) &&  Objects.equals(getAuthor(), post.getAuthor());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getTitle(), getContent(), getAuthor());
+        return Objects.hash(getId(), getTitle(), getAuthor(), getComponents());
     }
 
     @Override
@@ -101,7 +87,6 @@ public class Post {
         return "Post{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
                 ", author='" + author + '\'' +
                 '}';
     }

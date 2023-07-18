@@ -276,6 +276,10 @@ form * {
   line-height: 36px;
   font-weight: bold;
 }
+.posts .post .title a {
+  text-decoration: none;
+  color: #303637;
+}
 .posts .post .post__footer {
   padding: 15px;
   display: flex;
@@ -315,4 +319,17 @@ form * {
   line-height: 38px;
 }
 
-/*# sourceMappingURL=main.css.map */
+.post__page .post {
+  margin-top: 20px;
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 15px;
+}
+.post__page h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+.post__page .post__component {
+  margin-bottom: 30px;
+  line-height: 24px;
+}

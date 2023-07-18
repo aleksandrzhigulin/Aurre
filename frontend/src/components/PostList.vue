@@ -2,7 +2,9 @@
     <div class="posts">
         <div class="post" v-for="post in posts" :key="post.id">
             <div class="post__header">
-               <p class="title">{{ post.title }}</p> 
+               <p class="title">
+                 <router-link :to="'/post/' + post.id" class="title" :id="post.id">{{post.title}}</router-link>
+               </p>
             </div>
             <div class="post__body">
                 <div class="post__image">

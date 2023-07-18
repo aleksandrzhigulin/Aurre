@@ -5,6 +5,7 @@ import AboutPage from "@/pages/AboutPage.vue";
 import CreatePostPage from "@/pages/CreatePostPage.vue";
 import { createWebHistory } from 'vue-router';
 import {createRouter} from "vue-router";
+import PostPage from "@/pages/PostPage.vue";
 
 const routes = [
     {
@@ -29,7 +30,13 @@ const routes = [
     },
     {
         path: '/createPost',
-        component: CreatePostPage
+        component: CreatePostPage,
+        props: true
+    },
+    {
+        path: '/post/:id',
+        component: PostPage,
+        props: true
     }
 ]
 

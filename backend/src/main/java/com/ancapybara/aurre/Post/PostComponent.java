@@ -1,9 +1,6 @@
 package com.ancapybara.aurre.Post;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class PostComponent {
@@ -11,6 +8,7 @@ public class PostComponent {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String type;
+    @Column(columnDefinition = "TEXT")
     private String body;
 
     public PostComponent() {

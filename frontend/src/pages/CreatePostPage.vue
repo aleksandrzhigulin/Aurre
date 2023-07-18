@@ -21,13 +21,13 @@
             <button class="dropbtn" @click="myFunction"><i class="fa-solid fa-plus"></i>New element</button>
             <div id="myDropdown" class="dropdown-content">
               <a href="#" @click="addTextInstance">Text</a>
-              <a href="#">Image</a>
+              <!--<a href="#">Image</a> -->
             </div>
           </div>
           
             <div class="form__btns">
               <button class="yellow_btn">Save</button>
-              <button class="yellow_btn">Publish</button>
+              <button class="yellow_btn" @click="publishPost">Publish</button>
             </div>
 
         </form>
@@ -35,9 +35,10 @@
 </template>
 
 <script>
-//import {defineComponent, createApp} from "vue";
 import PostComponent from "@/components/PostComponent.vue";
 import PostComponentClass from "@/models/PostComponentClass.js";
+
+
 export default {
     data() {
         return {
@@ -64,9 +65,20 @@ export default {
       this.components.push(new_component);
       this.componentsAmount += 1;
     },
-    onComponentChange(body) {
-      console.log(body)
-      console.log(this.components)
+    onComponentChange(id, body) {
+      this.components.forEach(function (elem) {
+        if (elem.id === id) {
+          elem.body = body;
+        }
+      })
+    },
+
+    publishPost() {
+      this.axios.post("http://localhost:8080/posts/create", {
+        title: this.title,
+        author: getCookie("username"),
+        components: this.components
+      })
     }
 
   }
