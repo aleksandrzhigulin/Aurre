@@ -7,9 +7,7 @@
         <h1>{{this.title}}</h1>
         <div class="components">
           <div class="post__component" v-for="component in components" :key="component">
-            <div class="text__component" v-if="component.type === 'text'">
-              <p><b>{{component.body}}</b></p>
-            </div>
+            <p class="paragraph" v-if="component.type === 'text'">{{component.body}}</p>
           </div>
         </div>
         <p>{{this.author}}</p>

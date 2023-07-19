@@ -27,3 +27,4 @@ pnpm-debug.log*
 *.sw?
 /certs/
 /frontend/src/image/
+uploads/*

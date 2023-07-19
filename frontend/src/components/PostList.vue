@@ -8,7 +8,7 @@
             </div>
             <div class="post__body">
                 <div class="post__image">
-                    <img src="../image/newyork.jpg" alt=""> 
+                    <img src="../image/newyork.jpg" alt="">
                 </div> 
             </div>
             <div class="post__footer">
@@ -37,6 +37,6 @@ export default {
             type: Array,
             required: true
         }
-    }
+    },
 }
 </script>

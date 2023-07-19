@@ -306,17 +306,38 @@ form * {
   border-radius: 15px;
 }
 .newPost form input.text__input {
+  border-radius: 5px;
   width: 100%;
   border: 3px solid #303637;
   height: 40px;
   padding: 5px;
   font-size: 22px;
 }
+.newPost form textarea {
+  width: 100%;
+  border-radius: 3px;
+  border: 3px solid #303637;
+  min-height: 250px;
+  min-width: 100%;
+  max-width: 100%;
+  font-size: 18px;
+  line-height: 22px;
+  padding: 10px;
+}
 
 .post-create__element-header {
   font-weight: bold;
   font-size: 32px;
   line-height: 38px;
+}
+
+.form__btns {
+  display: flex;
+  justify-content: end;
+}
+.form__btns button {
+  border: none;
+  margin-left: 20px;
 }
 
 .post__page .post {
@@ -327,9 +348,15 @@ form * {
 }
 .post__page h1 {
   font-size: 48px;
+  line-height: 54px;
   margin-bottom: 15px;
 }
 .post__page .post__component {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   line-height: 24px;
+}
+.post__page .paragraph {
+  opacity: 0.8;
+  font-size: 18px;
+  line-height: 26px;
 }
