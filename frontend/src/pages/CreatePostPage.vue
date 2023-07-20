@@ -3,12 +3,12 @@
         <form @submit.prevent>
             <div class="post-create__element">
               <p class="post-create__element-header">Title</p>
-              <input type="text" class="text__input" v-model="title">
+              <input type="text" class="text__input" v-model="title" required>
             </div>
 
            <div class="post-create__element">
             <p class="post-create__element-header">Preview</p>
-            <input type="file" accept="image/*" @change="onFileChange">
+            <input type="file" accept="image/*" @change="onFileChange" required>
              <img v-if="url" :src="url"/>
            </div>
 

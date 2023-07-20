@@ -14,13 +14,13 @@
             <form @submit.prevent>
                 <input class="input_default"
                 v-model="usernameAuth"
-                type="text" 
+                type="text"
                 placeholder="Username"
                 >
                 
                 <input class="input_default"
                 v-model="passwordAuth"
-                type="text" 
+                type="password"
                 placeholder="Password"
                 >
                 <button @click="authorization()" class="yellow_btn">Sign in</button>
@@ -36,7 +36,7 @@
                 
                 <input class="input_default"
                 v-model="passwordRegistration"
-                type="text" 
+                type="password"
                 placeholder="Password"
                 >
                 <button @click="registration()" class="yellow_btn">Sign up</button>

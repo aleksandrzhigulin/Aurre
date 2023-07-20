@@ -25,6 +25,9 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
+    @Column(name = "avatar")
+    private String avatarFilename;
+
     @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -44,6 +47,7 @@ public class User implements UserDetails {
     public User(String username, String password, Set<Role> roles) {
         this.username = username;
         this.password = password;
+        this.avatarFilename = "b7928c60-bff0-480f-a736-54de5cb5089aancat.jpg";
         this.roles = roles;
     }
 
@@ -99,6 +103,14 @@ public class User implements UserDetails {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getAvatarFilename() {
+        return avatarFilename;
+    }
+
+    public void setAvatarFilename(String avatarFilename) {
+        this.avatarFilename = avatarFilename;
     }
 
     @Override

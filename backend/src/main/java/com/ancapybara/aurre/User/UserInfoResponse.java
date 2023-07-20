@@ -3,14 +3,16 @@ package com.ancapybara.aurre.User;
 public class UserInfoResponse {
     private Long id;
     private String username;
+    private String avatarFilename;
 
     public UserInfoResponse() {
 
     }
 
-    public UserInfoResponse(Long id, String username) {
+    public UserInfoResponse(Long id, String username, String avatarFilename) {
         this.id = id;
         this.username = username;
+        this.avatarFilename = avatarFilename;
     }
 
     public Long getId() {
@@ -27,5 +29,13 @@ public class UserInfoResponse {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getAvatarFilename() {
+        return avatarFilename;
+    }
+
+    public void setAvatarFilename(String avatarFilename) {
+        this.avatarFilename = avatarFilename;
     }
 }

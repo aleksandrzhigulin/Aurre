@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -47,7 +47,7 @@ input {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Rubik", sans-serif;
   background-color: #EEF0F2;
 }
 
@@ -258,7 +258,7 @@ form * {
 .posts .post {
   background-color: white;
   border-radius: 20px;
-  margin-top: 60px;
+  margin-top: 20px;
 }
 .posts .post .post__header {
   padding: 15px;
@@ -359,4 +359,38 @@ form * {
   opacity: 0.8;
   font-size: 18px;
   line-height: 26px;
+}
+
+.profile__page .profile {
+  margin-top: 20px;
+  background: #FFFFFF;
+  border-radius: 15px;
+  padding: 20px;
+}
+.profile__page .profile__info {
+  display: flex;
+}
+.profile__page .profile__info-left .image-wrap, .profile__page .profile__info-left .image-wrap img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.profile__page .profile__info-left .yellow_btn {
+  border: none;
+  font-weight: normal;
+  font-size: 18px;
+  padding: 0;
+  height: 50px;
+  width: 100%;
+}
+.profile__page .profile__info-right {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+}
+.profile__page .profile__info-right h1 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
 }

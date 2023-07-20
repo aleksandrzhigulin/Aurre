@@ -1,0 +1,43 @@
+.profile__page {
+  .profile {
+    margin-top: 20px;
+    background: $totalwhite;
+    border-radius: 15px;
+    padding: 20px;
+
+    &__info {
+      display: flex;
+
+      &-left {
+        .image-wrap, .image-wrap img {
+          width: 200px;
+          height: 200px;
+          object-fit: cover;
+          border-radius: 5px;
+        }
+
+        .yellow_btn {
+          border: none;
+          font-weight: normal;
+          font-size: 18px;
+          padding: 0;
+          height: 50px;
+          width: 100%;
+        }
+      }
+
+      &-right {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+
+}
