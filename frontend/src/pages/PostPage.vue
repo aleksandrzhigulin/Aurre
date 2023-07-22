@@ -10,7 +10,7 @@
             <p class="paragraph" v-if="component.type === 'text'">{{component.body}}</p>
           </div>
         </div>
-        <p>{{this.author}}</p>
+        <p class="author"><router-link :to="'/profile/' + this.author">{{this.author}}</router-link></p>
       </div>
     </div>
   </div>

@@ -26,56 +26,59 @@ import java.util.Set;
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
 public class AuthController {
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    UserService userService;
-    @Autowired
-    RoleCrudRepository roleCrudRepository;
-    @Autowired
-    AuthenticationManager authenticationManager;
 
-    @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+  @Autowired
+  UserRepository userRepository;
+  @Autowired
+  UserService userService;
+  @Autowired
+  RoleCrudRepository roleCrudRepository;
+  @Autowired
+  AuthenticationManager authenticationManager;
 
-    @Autowired
-    TokenService tokenService;
+  @Autowired
+  BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @Autowired
-    MyUserDetailsService myUserDetailsService;
+  @Autowired
+  TokenService tokenService;
 
-    @PostMapping("/auth/login")
-    public ResponseEntity<AuthResponse> auth(@RequestBody AuthRequest authRequest) {
-        String username = authRequest.getUsername();
-        String password = authRequest.getPassword();
-        Authentication authentication;
-        try {
-            authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, password));
-        } catch (BadCredentialsException e) {
-            return new ResponseEntity<>(new AuthResponse("Wrong password or username", null), HttpStatus.UNAUTHORIZED);
-        }
-        User user = (User) myUserDetailsService.loadUserByUsername(username);
-        String access_token = tokenService.generateAccessToken(user);
-        return new ResponseEntity<>(new AuthResponse("Success", access_token), HttpStatus.OK);
+  @Autowired
+  MyUserDetailsService myUserDetailsService;
+
+  @PostMapping("/auth/login")
+  public ResponseEntity<AuthResponse> auth(@RequestBody AuthRequest authRequest) {
+    String username = authRequest.getUsername();
+    String password = authRequest.getPassword();
+    Authentication authentication;
+    try {
+      authentication = authenticationManager.authenticate(
+          new UsernamePasswordAuthenticationToken(username, password));
+    } catch (BadCredentialsException e) {
+      return new ResponseEntity<>(new AuthResponse("Wrong password or username", null),
+          HttpStatus.UNAUTHORIZED);
     }
+    User user = (User) myUserDetailsService.loadUserByUsername(username);
+    String access_token = tokenService.generateAccessToken(user);
+    return new ResponseEntity<>(new AuthResponse("Success", access_token), HttpStatus.OK);
+  }
 
-    @PostMapping("auth/signup")
-    public ResponseEntity<AuthResponse> signup(@RequestBody AuthRequest authRequest) {
-        String username = authRequest.getUsername();
-        String password = authRequest.getPassword();
-        if (userRepository.findByUsername(username).isPresent()) {
-            return new ResponseEntity<>(
-                    new AuthResponse("User exists", null), HttpStatus.UNAUTHORIZED
-            );
-        }
-        Role role = new Role("user");
-        Set<Role> roles = Collections.singleton(role);
-        User user = new User(username, bCryptPasswordEncoder.encode(password), roles);
-        String accessToken = tokenService.generateAccessToken(user);
-        roleCrudRepository.save(role);
-        userService.saveUser(user);
-        return new ResponseEntity<>(new AuthResponse("Success", accessToken), HttpStatus.OK);
+  @PostMapping("auth/signup")
+  public ResponseEntity<AuthResponse> signup(@RequestBody AuthRequest authRequest) {
+    String username = authRequest.getUsername();
+    String password = authRequest.getPassword();
+    if (userRepository.findByUsername(username).isPresent()) {
+      return new ResponseEntity<>(
+          new AuthResponse("User exists", null), HttpStatus.UNAUTHORIZED
+      );
     }
+    Role role = new Role("user");
+    Set<Role> roles = Collections.singleton(role);
+    User user = new User(username, bCryptPasswordEncoder.encode(password), roles);
+    String accessToken = tokenService.generateAccessToken(user);
+    roleCrudRepository.save(role);
+    userService.saveUser(user);
+    return new ResponseEntity<>(new AuthResponse("Success", accessToken), HttpStatus.OK);
+  }
 
 
 }

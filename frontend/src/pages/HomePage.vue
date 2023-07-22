@@ -1,18 +1,16 @@
 <template>
     <div class="container">
         <PostList :posts="posts"></PostList>
-        <PostForm></PostForm>
     </div>
 
 </template>
 
 <script>
 
-import PostForm from '@/components/PostForm';
 import PostList from '@/components/PostList';
 export default {
     components: {
-        PostForm, PostList
+        PostList
     },
     data() {
         return {

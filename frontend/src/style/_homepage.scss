@@ -6,6 +6,8 @@ form {
     }
 }
 .posts {
+    display: flex;
+    flex-direction: column-reverse;
     .post {
         background-color: white;
         border-radius: 20px;
@@ -35,9 +37,6 @@ form {
             display: flex;
             justify-content: right;
         }
-        .author {
-            font-weight: 500;
-        }
         .post__info {
             display: flex;
             justify-content: space-between;
@@ -49,5 +48,12 @@ form {
             }
         }
         margin-top: 20px;
+    }
+}
+.author {
+    font-weight: 500;
+    a {
+        text-decoration: none;
+        color: $black;
     }
 }

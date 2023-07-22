@@ -10,8 +10,8 @@ import org.springframework.context.annotation.PropertySource;
 @EnableConfigurationProperties(RsaProperties.class)
 public class AurreApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AurreApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(AurreApplication.class, args);
+  }
 
 }

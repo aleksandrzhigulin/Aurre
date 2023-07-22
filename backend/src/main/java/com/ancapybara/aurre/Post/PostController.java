@@ -13,43 +13,56 @@ import java.util.Optional;
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
 public class PostController {
-    @Autowired
-    ObjectMapper objectMapper = new ObjectMapper();
-    @Autowired
-    private PostService postService;
-    @Autowired
-    private PostRepository postRepository;
 
-    @Autowired
-    private PostComponentRepository postComponentRepository;
+  @Autowired
+  ObjectMapper objectMapper = new ObjectMapper();
+  @Autowired
+  private PostService postService;
+  @Autowired
+  private PostRepository postRepository;
 
-    @GetMapping("/posts/get/all")
-    public ResponseEntity<String> getAllPosts() throws JsonProcessingException {
-        Iterable<Post> posts = postRepository.findAll();
-        String json = objectMapper.writeValueAsString(posts);
-        return ResponseEntity.ok(json);
+  @Autowired
+  private PostJPARepository postJPARepository;
+
+  @Autowired
+  private PostComponentRepository postComponentRepository;
+
+  @GetMapping("/posts/get/all")
+  public ResponseEntity<String> getAllPosts() throws JsonProcessingException {
+    Iterable<Post> posts = postRepository.findAll();
+    String json = objectMapper.writeValueAsString(posts);
+    return ResponseEntity.ok(json);
+  }
+
+  @GetMapping("/posts/get/author/{author}")
+  public ResponseEntity<?> getAllPostsByAuthor(@PathVariable("author") String author)
+      throws JsonProcessingException {
+    List<Post> posts = postJPARepository.findAllByAuthor(author);
+    String json = objectMapper.writeValueAsString(posts);
+    return ResponseEntity.ok(json);
+  }
+
+  @GetMapping("/posts/get/{id}")
+  public ResponseEntity<String> getPostById(@PathVariable Long id) throws JsonProcessingException {
+    Optional<Post> post = postRepository.findById(id);
+    if (post.isPresent()) {
+      String json = objectMapper.writeValueAsString(post);
+      return ResponseEntity.ok(json);
     }
+    return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+  }
 
-    @GetMapping("/posts/get/{id}")
-    public ResponseEntity<String> getPostById(@PathVariable Long id) throws JsonProcessingException {
-        Optional<Post> post = postRepository.findById(id);
-        if (post.isPresent()) {
-            String json = objectMapper.writeValueAsString(post);
-            return ResponseEntity.ok(json);
-        }
-        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+  @PostMapping("/posts/create")
+  public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest)
+      throws JsonProcessingException {
+    String title = postRequest.getTitle();
+    String author = postRequest.getAuthor();
+    List<PostComponent> postComponents = postRequest.getComponents();
+    for (PostComponent component : postComponents) {
+      postComponentRepository.save(component);
     }
-
-    @PostMapping("/posts/create")
-    public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest) throws JsonProcessingException {
-        String title = postRequest.getTitle();
-        String author = postRequest.getAuthor();
-        List<PostComponent> postComponents = postRequest.getComponents();
-        for (PostComponent component : postComponents) {
-            postComponentRepository.save(component);
-        }
-        Post post = postRepository.save(new Post(title, author, postComponents));
-        String json = objectMapper.writeValueAsString(post);
-        return ResponseEntity.ok(json);
-    }
+    Post post = postRepository.save(new Post(title, author, postComponents));
+    String json = objectMapper.writeValueAsString(post);
+    return ResponseEntity.ok(json);
+  }
 }

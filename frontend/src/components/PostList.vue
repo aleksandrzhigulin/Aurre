@@ -19,7 +19,7 @@
                     </div>
 
                     <div class="post__info-author">
-                        <p class="author">{{ post.author }}</p> 
+                        <p class="author"><router-link :to="'/profile/' + post.author">{{post.author}}</router-link></p>
                      </div>
                 </div>
             </div>

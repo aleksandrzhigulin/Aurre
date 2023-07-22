@@ -255,6 +255,10 @@ form * {
   margin-top: 10px;
 }
 
+.posts {
+  display: flex;
+  flex-direction: column-reverse;
+}
 .posts .post {
   background-color: white;
   border-radius: 20px;
@@ -285,9 +289,6 @@ form * {
   display: flex;
   justify-content: right;
 }
-.posts .post .author {
-  font-weight: 500;
-}
 .posts .post .post__info {
   display: flex;
   justify-content: space-between;
@@ -297,6 +298,14 @@ form * {
 }
 .posts .post .post__info div {
   margin-left: 20px;
+}
+
+.author {
+  font-weight: 500;
+}
+.author a {
+  text-decoration: none;
+  color: #303637;
 }
 
 .newPost {

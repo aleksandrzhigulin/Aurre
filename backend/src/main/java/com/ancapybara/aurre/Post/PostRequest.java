@@ -3,48 +3,49 @@ package com.ancapybara.aurre.Post;
 import java.util.List;
 
 public class PostRequest {
-    private String title;
-    private String content;
 
-    private String author;
+  private String title;
+  private String content;
 
-    private List<PostComponent> components;
+  private String author;
 
-    public String getAuthor() {
-        return author;
-    }
+  private List<PostComponent> components;
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+  public String getAuthor() {
+    return author;
+  }
 
-    public String getTitle() {
-        return title;
-    }
+  public void setAuthor(String author) {
+    this.author = author;
+  }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+  public String getTitle() {
+    return title;
+  }
 
-    public String getContent() {
-        return content;
-    }
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+  public String getContent() {
+    return content;
+  }
 
-    public List<PostComponent> getComponents() {
-        return components;
-    }
+  public void setContent(String content) {
+    this.content = content;
+  }
 
-    public void setComponents(List<PostComponent> components) {
-        this.components = components;
-    }
+  public List<PostComponent> getComponents() {
+    return components;
+  }
 
-    public PostRequest(String title, String author, List<PostComponent> components) {
-        this.title = title;
-        this.author = author;
-        this.components = components;
-    }
+  public void setComponents(List<PostComponent> components) {
+    this.components = components;
+  }
+
+  public PostRequest(String title, String author, List<PostComponent> components) {
+    this.title = title;
+    this.author = author;
+    this.components = components;
+  }
 }

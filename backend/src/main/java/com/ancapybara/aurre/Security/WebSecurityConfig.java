@@ -32,56 +32,64 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    private final RsaProperties rsaKeys;
-    @Bean
-    public MyUserDetailsService myUserDetailsService() {
-        return new MyUserDetailsService();
-    }
-    public WebSecurityConfig(RsaProperties rsaKeys) {
-        this.rsaKeys = rsaKeys;
-    }
-    @Bean
-    JwtEncoder jwtEncoder() {
-        JWK jwk = new RSAKey.Builder(rsaKeys.publicKey()).privateKey(rsaKeys.privateKey()).build();
-        JWKSource<SecurityContext> jwkSource = new ImmutableJWKSet<>(new JWKSet(jwk));
-        return new NimbusJwtEncoder(jwkSource);
-    }
 
-    @Bean
-    JwtDecoder jwtDecoder() {
-        return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey()).build();
-    }
+  private final RsaProperties rsaKeys;
 
-    @Bean
-    TokenService tokenService() {
-        return new TokenService(jwtEncoder());
-    }
-    @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-    @Bean
-    public AuthenticationManager authManager() {
-        var authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(myUserDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder());
-        return new ProviderManager(authProvider);
-    }
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .csrf(AbstractHttpConfigurer::disable)
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, "/posts/create").hasAuthority("SCOPE_user")
-                        .requestMatchers(HttpMethod.GET, "/user/get/**").permitAll()
-                        .anyRequest().permitAll()
-                )
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .oauth2ResourceServer((rs) ->
-                        rs.jwt((jwt) ->jwt.decoder(jwtDecoder()))
-                );
+  @Bean
+  public MyUserDetailsService myUserDetailsService() {
+    return new MyUserDetailsService();
+  }
 
-        return http.build();
-    }
+  public WebSecurityConfig(RsaProperties rsaKeys) {
+    this.rsaKeys = rsaKeys;
+  }
+
+  @Bean
+  JwtEncoder jwtEncoder() {
+    JWK jwk = new RSAKey.Builder(rsaKeys.publicKey()).privateKey(rsaKeys.privateKey()).build();
+    JWKSource<SecurityContext> jwkSource = new ImmutableJWKSet<>(new JWKSet(jwk));
+    return new NimbusJwtEncoder(jwkSource);
+  }
+
+  @Bean
+  JwtDecoder jwtDecoder() {
+    return NimbusJwtDecoder.withPublicKey(rsaKeys.publicKey()).build();
+  }
+
+  @Bean
+  TokenService tokenService() {
+    return new TokenService(jwtEncoder());
+  }
+
+  @Bean
+  public BCryptPasswordEncoder passwordEncoder() {
+    return new BCryptPasswordEncoder();
+  }
+
+  @Bean
+  public AuthenticationManager authManager() {
+    var authProvider = new DaoAuthenticationProvider();
+    authProvider.setUserDetailsService(myUserDetailsService());
+    authProvider.setPasswordEncoder(passwordEncoder());
+    return new ProviderManager(authProvider);
+  }
+
+  @Bean
+  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    http
+        .csrf(AbstractHttpConfigurer::disable)
+        .authorizeHttpRequests(auth -> auth
+            .requestMatchers(HttpMethod.POST, "/posts/create").hasAuthority("SCOPE_user")
+            .requestMatchers(HttpMethod.GET, "/user/get/**").permitAll()
+            .anyRequest().permitAll()
+        )
+        .sessionManagement(
+            session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+        .oauth2ResourceServer((rs) ->
+            rs.jwt((jwt) -> jwt.decoder(jwtDecoder()))
+        );
+
+    return http.build();
+  }
 
 }

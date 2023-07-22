@@ -1,41 +1,42 @@
 package com.ancapybara.aurre.User;
 
 public class UserInfoResponse {
-    private Long id;
-    private String username;
-    private String avatarFilename;
 
-    public UserInfoResponse() {
+  private Long id;
+  private String username;
+  private String avatarFilename;
 
-    }
+  public UserInfoResponse() {
 
-    public UserInfoResponse(Long id, String username, String avatarFilename) {
-        this.id = id;
-        this.username = username;
-        this.avatarFilename = avatarFilename;
-    }
+  }
 
-    public Long getId() {
-        return id;
-    }
+  public UserInfoResponse(Long id, String username, String avatarFilename) {
+    this.id = id;
+    this.username = username;
+    this.avatarFilename = avatarFilename;
+  }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getUsername() {
-        return username;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+  public String getUsername() {
+    return username;
+  }
 
-    public String getAvatarFilename() {
-        return avatarFilename;
-    }
+  public void setUsername(String username) {
+    this.username = username;
+  }
 
-    public void setAvatarFilename(String avatarFilename) {
-        this.avatarFilename = avatarFilename;
-    }
+  public String getAvatarFilename() {
+    return avatarFilename;
+  }
+
+  public void setAvatarFilename(String avatarFilename) {
+    this.avatarFilename = avatarFilename;
+  }
 }

@@ -3,12 +3,12 @@
         <form @submit.prevent>
             <div class="post-create__element">
               <p class="post-create__element-header">Title</p>
-              <input type="text" class="text__input" v-model="title" required>
+              <input type="text" class="text__input" v-model="title">
             </div>
 
            <div class="post-create__element">
             <p class="post-create__element-header">Preview</p>
-            <input type="file" accept="image/*" @change="onFileChange" required>
+            <input type="file" accept="image/*" @change="onFileChange">
              <img v-if="url" :src="url"/>
            </div>
 
@@ -45,11 +45,15 @@ export default {
             title: "",
             url: null,
             components: [],
-            componentsAmount: 0
+            componentsAmount: 0,
+            author: ""
         }
     },
     components: {
       PostComponent
+    },
+    mounted() {
+      this.axios.get("http://localhost:8080/user/get").then(response => (this.author = response.data.username))
     },
   methods: {
     onFileChange(e) {
@@ -73,13 +77,15 @@ export default {
       })
     },
 
-    publishPost() {
+    publishPost()
+    {
       this.axios.post("http://localhost:8080/posts/create", {
         title: this.title,
-        author: getCookie("username"),
+        author: this.author,
         components: this.components
-      })
+      });
     }
+
 
   }
 }
