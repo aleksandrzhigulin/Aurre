@@ -23,6 +23,8 @@
 </template>
 
 <script>
+
+
 export default {
     data() {
         return {
@@ -46,6 +48,7 @@ export default {
                 .then(response => (this.id = response.data.id, this.username = response.data.username))
 
         }
+
     }
     
 }

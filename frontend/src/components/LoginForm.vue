@@ -48,17 +48,20 @@
 
 <script>
 
+import {useToast} from "vue-toastification";
+const toast =  useToast();
 export default {
     data() {
         return {
             usernameAuth: '',
             passwordAuth: '',
             usernameRegistration: '',
-            passwordRegistration: ''
+            passwordRegistration: '',
         }
     },
     methods: {
         authorization() {
+          const profileUsername = this.usernameAuth;
           this.axios.post('http://localhost:8080/auth/login', {
                 username: this.usernameAuth,
                 password: this.passwordAuth
@@ -66,26 +69,25 @@ export default {
             .then(function (response) {
                 console.log(response.data.access_token);
                 setCookie("jwt", response.data.access_token, {secure: true, 'max-age': 31536000});
-                location.reload();
+                window.location.replace("/profile/" + profileUsername);
             })
             .catch(function (error) {
-                console.log(error);
-                console.log("error")
+                toast.error(error.response.data.message);
             });
             
         },
         registration() {
+          const profileUsername = this.usernameRegistration;
           this.axios.post('http://localhost:8080/auth/signup', {
                 username: this.usernameRegistration,
                 password: this.passwordRegistration
             })
             .then(function (response) {
-                console.log(response.data.access_token);
                 setCookie("jwt", response.data.access_token, {secure: true, 'max-age': 31536000});
-                location.reload();
+                window.location.replace("/profile/" + profileUsername);
             })
             .catch(function (error) {
-                console.log(error);
+              toast.error(error.response.data.message);
             });
         }
     },

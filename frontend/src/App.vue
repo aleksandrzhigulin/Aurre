@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 import AurreHeader from '@/components/AurreHeader';
 export default {
     components: {

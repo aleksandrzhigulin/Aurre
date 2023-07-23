@@ -342,7 +342,7 @@ form * {
 
 .form__btns {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .form__btns button {
   border: none;
