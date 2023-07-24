@@ -1,5 +1,10 @@
 package com.ancapybara.aurre.File;
 
+import com.ancapybara.aurre.User.User;
+import com.ancapybara.aurre.User.UserRepository;
+
+import java.security.Principal;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +24,10 @@ public class FileController {
 
   @Autowired
   FileService fileService;
+  @Autowired
+  UserRepository userRepository;
+
+  record FileResponse(String filename) {}
 
   @PostMapping("/files/upload")
   public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
@@ -29,7 +38,26 @@ public class FileController {
       return new ResponseEntity<>("Error", HttpStatus.SERVICE_UNAVAILABLE);
     }
 
-    return ResponseEntity.ok(filename);
+    return ResponseEntity.ok(new FileResponse(filename));
+  }
+
+  @PostMapping("/files/upload/avatar/")
+  public ResponseEntity<?> uploadAvatar(Principal principal, @RequestParam("file") MultipartFile file) {
+    String filename;
+    Optional<User> user = userRepository.findByUsername(principal.getName());
+    try {
+      filename = fileService.upload(file);
+      if (user.isPresent()) {
+        user.get().setAvatarFilename(filename);
+        userRepository.save(user.get());
+      } else {
+        return new ResponseEntity<>("User not found", HttpStatus.NOT_FOUND);
+      }
+    } catch (RuntimeException e) {
+      return new ResponseEntity<>("Error", HttpStatus.SERVICE_UNAVAILABLE);
+    }
+
+    return ResponseEntity.ok(new FileResponse(filename));
   }
 
   @GetMapping("/files/get/{filename}")

@@ -1,5 +1,5 @@
 <template>
-    <div class="container newPost">
+    <div class="container newPost" id="create_post_page">
         <form @submit.prevent>
             <div class="post-create__element">
               <p class="post-create__element-header">Title</p>
@@ -13,14 +13,18 @@
            </div>
 
 
-            <div class="custom__elements" id="custom__elements" v-for="component in components" :key="component.id">
+            <div class="custom__elements"
+                 id="custom__elements"
+                 v-for="component in components"
+                 :key="component.id"
+            >
               <PostComponent :id="component.id" :component_type="component.type" @edit="onComponentChange"></PostComponent>
             </div>
 
           <div class="new__element-btn dropdown">
             <button class="dropbtn" @click="myFunction"><i class="fa-solid fa-plus"></i>New element</button>
             <div id="myDropdown" class="dropdown-content">
-              <a href="#" @click="addTextInstance">Text</a>
+              <a @click="addTextInstance">Text</a>
               <!--<a href="#">Image</a> -->
             </div>
           </div>
@@ -37,6 +41,7 @@
 <script>
 import PostComponent from "@/components/PostComponent.vue";
 import PostComponentClass from "@/models/PostComponentClass.js";
+import {nextTick} from "vue";
 
 
 export default {
@@ -75,6 +80,9 @@ export default {
           elem.body = body;
         }
       })
+
+
+
     },
 
     publishPost()
@@ -84,10 +92,9 @@ export default {
         author: this.author,
         components: this.components
       });
-    }
+    },
 
-
-  }
+  },
 }
 
 // Close the dropdown menu if the user clicks outside of it

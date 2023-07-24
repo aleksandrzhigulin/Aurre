@@ -10,7 +10,9 @@ body {
     font-family: "Rubik", sans-serif;
     background-color: $white;
 }
-
+::selection {
+    background-color: $yellow;
+}
 header {
     transition: all 3s;
     background-color: $totalwhite;
