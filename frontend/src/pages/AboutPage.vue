@@ -4,7 +4,9 @@
 
 <template>
   <div class="container">
-    <h1>About me</h1>
+    <div class="about">
+
+    </div>
   </div>
 </template>
 

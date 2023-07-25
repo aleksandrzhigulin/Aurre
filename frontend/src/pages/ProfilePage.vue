@@ -19,7 +19,12 @@
           </div>
 
       </div>
-    </div>
+      <div class="profile__data">
+        <div class="profile_posts">
+          <PostList :posts="this.userPosts"></PostList>
+        </div>
+      </div>
+    </div> <!-- container -->
 
     <div class="popup">
       <h1>Upload an avatar</h1>
@@ -42,13 +47,17 @@
 </template>
 
 <script>
+import PostList from "@/components/PostList.vue";
+
 export default {
+  components: {PostList},
   data() {
     return {
       isAuthorized: false,
       username: "",
       avatarFilename: "",
-      uploadProgress: 0
+      uploadProgress: 0,
+      userPosts: []
     }
   },
 
@@ -65,15 +74,18 @@ export default {
       this.axios
           .get("http://localhost:8080/user/get")
           .then(response => (this.id = response.data.id,
-              this.username = response.data.username,
-              this.avatarFilename = response.data.avatarFilename))
+              this.username = response.data.username))
 
     } else {
       this.axios
           .get("http://localhost:8080/user/get/" + this.profileUsername)
-          .then(response => (this.id = response.data.id,
-              this.avatarFilename = response.data.avatarFilename))
+          .then(response => (this.id = response.data.id))
     }
+    this.axios.get("http://localhost:8080/user/get/" + this.profileUsername)
+        .then(response => (this.avatarFilename=response.data.avatarFilename))
+    this.axios
+        .get("http://localhost:8080/posts/get/author/" + this.profileUsername)
+        .then(response => (this.userPosts = response.data, console.log(response)))
   },
   methods: {
     openPopup() {
@@ -100,7 +112,7 @@ export default {
           })
           .then(response => {
             console.log(response);
-            this.avatarFilename = response.data;
+            this.avatarFilename = response.data.filename;
           })
     }
   }

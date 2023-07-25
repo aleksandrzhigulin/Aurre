@@ -489,3 +489,10 @@ form * {
   font-size: 24px;
   line-height: 30px;
 }
+
+.about {
+  background-color: #FFFFFF;
+  margin-top: 20px;
+  border-radius: 15px;
+  padding: 20px;
+}
