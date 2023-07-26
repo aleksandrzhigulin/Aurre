@@ -1,0 +1,24 @@
+.comments {
+  display: flex;
+  flex-direction: column-reverse;
+
+  .comment {
+    display: flex;
+    margin-bottom: 20px;
+  }
+
+  .comment__left {
+    margin-right: 15px;
+  }
+
+  .comment__right {
+    
+  }
+}
+
+.post__comments {
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  background-color: $totalwhite;
+}

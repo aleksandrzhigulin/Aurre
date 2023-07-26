@@ -12,13 +12,20 @@
         </div>
         <p class="author"><router-link :to="'/profile/' + this.author">{{this.author}}</router-link></p>
       </div>
+
+      <div class="post__comments">
+        <CommentsList :post-id="this.id"></CommentsList>
+      </div>
     </div>
   </div>
 
 </template>
 
 <script>
+import CommentsList from "@/components/CommentsList.vue";
+
 export default {
+  components: {CommentsList},
   data() {
     return {
       title: "",

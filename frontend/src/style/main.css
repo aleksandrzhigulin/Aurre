@@ -496,3 +496,21 @@ form * {
   border-radius: 15px;
   padding: 20px;
 }
+
+.comments {
+  display: flex;
+  flex-direction: column-reverse;
+}
+.comments .comment {
+  display: flex;
+  margin-bottom: 20px;
+}
+.comments .comment__left {
+  margin-right: 15px;
+}
+.post__comments {
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  background-color: #FFFFFF;
+}
