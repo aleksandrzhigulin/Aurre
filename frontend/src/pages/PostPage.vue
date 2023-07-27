@@ -12,9 +12,13 @@
         </div>
         <p class="author"><router-link :to="'/profile/' + this.author">{{this.author}}</router-link></p>
       </div>
-
+      <div class="write__comment">
+        <p class="header">Write a comment</p>
+        <textarea v-model="comment"></textarea>
+        <button class="yellow_btn">Send</button>
+      </div>
       <div class="post__comments">
-        <CommentsList :post-id="this.id"></CommentsList>
+        <CommentsList :postId="parseInt(this.id)"></CommentsList>
       </div>
     </div>
   </div>
@@ -30,20 +34,21 @@ export default {
     return {
       title: "",
       author: "",
-      components: []
+      components: [],
+      comment: ""
     }
   },
 
   props: {
     id: {
-      type: Number,
+      type: [Number, String],
       required: true
     }
   },
 
   mounted() {
     this.axios
-        .get("http://localhost:8080/posts/get/" + this.id)
+        .get("http://localhost:8080/posts/get/" + parseInt(this.id))
         .then(response => {
           this.title = response.data.title;
           this.author = response.data.author;

@@ -21,3 +21,28 @@
     line-height: 26px;
   }
 }
+
+.write__comment {
+  margin-top: 20px;
+  background-color: $totalwhite;
+  padding: 20px;
+  border-radius: 15px;
+
+  p {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 5px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 120px;
+    border: 2px solid $black;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+  button {
+    width: 100%;
+    border: none;
+  }
+}
