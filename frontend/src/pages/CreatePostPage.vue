@@ -18,7 +18,7 @@
                  v-for="component in components"
                  :key="component.id"
             >
-              <PostComponent :id="component.id" :component_type="component.type" @edit="onComponentChange"></PostComponent>
+              <PostComponent :id="component.id" :component_type="component.type" @remove="componentRemove" @edit="onComponentChange"></PostComponent>
             </div>
 
           <div class="new__element-btn dropdown">
@@ -81,8 +81,14 @@ export default {
         }
       })
 
-
-
+    },
+    componentRemove(id) {
+      for (var i = 0; i < this.components.length; i++) {
+        if (this.components.at(i).id === id) {
+          this.components.splice(i,1);
+          break
+        }
+      }
     },
 
     publishPost()

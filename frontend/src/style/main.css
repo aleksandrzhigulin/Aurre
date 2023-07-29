@@ -435,6 +435,20 @@ form * {
   margin-left: 20px;
 }
 
+.element__header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+.element__header button {
+  background-color: #ffdd2d;
+  border: none;
+  width: 120px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 .post__page .post {
   margin-top: 20px;
   background-color: #FFFFFF;
