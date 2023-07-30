@@ -534,6 +534,46 @@ form * {
   padding: 20px;
 }
 
+.about {
+  display: flex;
+}
+.about__info h1 {
+  font-size: 32px;
+  line-height: 36px;
+}
+.about__info .links {
+  display: flex;
+}
+.about__info .links a {
+  margin-right: 15px;
+  color: #303637;
+  opacity: 0.5;
+}
+.about__info .about-text {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.about__info .about-text .header {
+  font-weight: bold;
+  line-height: 24px;
+  font-size: 18px;
+}
+.about__info .about-text .paragraph {
+  opacity: 0.7;
+  font-size: 18px;
+}
+
+.about__avatar, .about__avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+
+.about__avatar {
+  margin-right: 15px;
+}
+
 .comments {
   display: flex;
   flex-direction: column-reverse;

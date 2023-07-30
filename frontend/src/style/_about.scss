@@ -4,3 +4,43 @@
   border-radius: 15px;
   padding: 20px;
 }
+.about {
+  display: flex;
+  &__info {
+    h1 {
+      font-size: 32px;
+      line-height: 36px;
+    }
+    .links {
+      display: flex;
+      a {
+        margin-right: 15px;
+        color: $black;
+        opacity: 0.5;
+      }
+    }
+
+    .about-text {
+      .header {
+        font-weight: bold;
+        line-height: 24px;
+        font-size: 18px;
+      }
+      .paragraph {
+        opacity: 0.7;
+        font-size: 18px;
+      }
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+.about__avatar, .about__avatar img {
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+}
+.about__avatar {
+  margin-right: 15px;
+}
