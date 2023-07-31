@@ -1,5 +1,7 @@
 package com.ancapybara.aurre.File;
 
+import com.ancapybara.aurre.Exceptions.File.MyFileIsEmptyException;
+import com.ancapybara.aurre.Exceptions.File.MyFileNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

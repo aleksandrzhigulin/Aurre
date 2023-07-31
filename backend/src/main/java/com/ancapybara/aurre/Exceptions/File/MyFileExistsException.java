@@ -1,4 +1,4 @@
-package com.ancapybara.aurre.File;
+package com.ancapybara.aurre.Exceptions.File;
 
 public class MyFileExistsException extends RuntimeException {
 

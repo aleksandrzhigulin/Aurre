@@ -1,5 +1,6 @@
 package com.ancapybara.aurre.File;
 
+import com.ancapybara.aurre.Exceptions.File.MyFileNotFoundException;
 import com.ancapybara.aurre.User.User;
 import com.ancapybara.aurre.User.UserRepository;
 
