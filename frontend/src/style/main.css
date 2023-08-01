@@ -400,6 +400,24 @@ form * {
   margin-top: 30px;
   border-radius: 15px;
 }
+.newPost label, .newPost label p {
+  text-align: center;
+  width: 100%;
+  height: 40px;
+  background: #303637;
+  color: #EEF0F2;
+  font-weight: bold;
+  font-size: 28px;
+  border-radius: 5px;
+  cursor: pointer;
+  line-height: 36px;
+}
+.newPost .preview {
+  width: 100%;
+}
+.newPost label input {
+  display: none;
+}
 .newPost form input.text__input {
   border-radius: 5px;
   width: 100%;

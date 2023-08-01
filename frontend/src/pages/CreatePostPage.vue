@@ -8,8 +8,12 @@
 
            <div class="post-create__element">
             <p class="post-create__element-header">Preview</p>
-            <input type="file" accept="image/*" @change="onFileChange">
-             <img v-if="url" :src="url"/>
+             <label class="upload__label">
+               <input type="file" accept="image/*" @change="onFileChange">
+               <p>Choose a file</p>
+             </label>
+
+             <img v-if="url" :src="url" class="preview"/>
            </div>
 
 

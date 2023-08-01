@@ -12,7 +12,7 @@
         <h1 class="name">Aleksandr Zhigulin</h1>
         <div class="links">
           <a href="https://github.com/payl0adk" target="_blank">Github</a>
-          <a href="" target="_blank">Linkedin</a>
+          <a href="https://www.linkedin.com/in/ancapybara/" target="_blank">Linkedin</a>
           <a href="https://t.me/fleasc" target="_blank">Telegram</a>
         </div>
         <div class="about-text">

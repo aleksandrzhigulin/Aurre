@@ -65,4 +65,14 @@ public class PostController {
     String json = objectMapper.writeValueAsString(post);
     return ResponseEntity.ok(json);
   }
+
+  @DeleteMapping("/posts/delete/{id}")
+  public ResponseEntity<?> deletePost(@PathVariable("id") Long id) {
+    Optional<Post> post = postRepository.findById(id);
+    if (post.isEmpty()) {
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    postRepository.delete(post.get());
+    return ResponseEntity.ok("Success");
+  }
 }
