@@ -7,12 +7,22 @@
     margin-bottom: 20px;
   }
 
+  .comment:first-child {
+    margin-bottom: 0;
+  }
+
   .comment__left {
-    margin-right: 15px;
+    margin-right: 12px;
   }
 
   .comment__right {
     
+  }
+  .image-wrap, .image-wrap img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
   }
 }
 

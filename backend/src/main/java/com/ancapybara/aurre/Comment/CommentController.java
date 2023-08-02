@@ -1,6 +1,7 @@
 package com.ancapybara.aurre.Comment;
 
 import com.ancapybara.aurre.User.MyUserDetailsService;
+import com.ancapybara.aurre.User.User;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.security.Principal;
@@ -40,8 +41,8 @@ public class CommentController {
   @PostMapping("/comments/create")
   public ResponseEntity<?> createComment(Principal principal,
       @RequestBody CommentRequest request) throws JsonProcessingException {
-
-    Comment comment = new Comment(request.postId, principal.getName(), request.message);
+    User author = (User) myUserDetailsService.loadUserByUsername(principal.getName());
+    Comment comment = new Comment(request.postId, author, request.message);
     commentRepository.save(comment);
 
     return new ResponseEntity<>(objectMapper.writeValueAsString(comment), HttpStatus.OK);

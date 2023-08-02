@@ -15,7 +15,7 @@
       <div class="write__comment">
         <p class="header">Write a comment</p>
         <textarea v-model="comment"></textarea>
-        <button class="yellow_btn">Send</button>
+        <button class="yellow_btn" @click="createComment">Send</button>
       </div>
       <div class="post__comments">
         <CommentsList :postId="parseInt(this.id)"></CommentsList>
@@ -27,7 +27,8 @@
 
 <script>
 import CommentsList from "@/components/CommentsList.vue";
-
+import {useToast} from "vue-toastification";
+const toast =  useToast();
 export default {
   components: {CommentsList},
   data() {
@@ -54,6 +55,19 @@ export default {
           this.author = response.data.author;
           this.components = response.data.components;
         })
+  },
+  methods: {
+   createComment() {
+     if (this.comment !== "") {
+       this.axios.post("http://localhost:8080/comments/create", {
+         postId: parseInt(this.id),
+         message: this.comment
+       }).then(response => {
+         toast.success("Comment successfully created!");
+       })
+
+     }
+   }
   }
 }
 </script>

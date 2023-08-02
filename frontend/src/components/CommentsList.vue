@@ -3,12 +3,12 @@
   <div class="comment" v-for="comment in comments" :key="comment.id">
     <div class="comment__left">
       <div class="image-wrap">
-        <img src="" alt="Avatar">
+        <img :src="'http://localhost:8080/files/get/' + comment.author.avatarFilename" alt="Avatar">
       </div>
     </div>
     <div class="comment__right">
         <div class="comment-info">
-          <p class="author"><router-link :to="'/profile/' + comment.author">{{comment.author}}</router-link></p>
+          <p class="author"><router-link :to="'/profile/' + comment.author.username">{{comment.author.username}}</router-link></p>
           <p class="message">{{comment.message}}</p>
         </div>
     </div>

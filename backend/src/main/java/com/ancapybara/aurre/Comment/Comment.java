@@ -1,5 +1,6 @@
 package com.ancapybara.aurre.Comment;
 
+import com.ancapybara.aurre.User.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +15,7 @@ public class Comment {
 
   private Long postId;
 
-  private String author;
+  private User author;
 
   private String message;
 
@@ -22,7 +23,7 @@ public class Comment {
 
   }
 
-  public Comment(Long postId, String author, String message) {
+  public Comment(Long postId, User author, String message) {
     this.postId = postId;
     this.author = author;
     this.message = message;
@@ -44,11 +45,11 @@ public class Comment {
     this.postId = postId;
   }
 
-  public String getAuthor() {
+  public User getAuthor() {
     return author;
   }
 
-  public void setAuthor(String author) {
+  public void setAuthor(User author) {
     this.author = author;
   }
 

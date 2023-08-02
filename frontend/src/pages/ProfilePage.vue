@@ -67,7 +67,6 @@ export default {
       required: true
     }
   },
-
   mounted() {
     if (getCookie("jwt") != null) {
       this.isAuthorized = true;
@@ -85,7 +84,7 @@ export default {
         .then(response => (this.avatarFilename=response.data.avatarFilename))
     this.axios
         .get("http://localhost:8080/posts/get/author/" + this.profileUsername)
-        .then(response => (this.userPosts = response.data, console.log(response)))
+        .then(response => (this.userPosts = response.data))
   },
   methods: {
     openPopup() {
@@ -111,7 +110,6 @@ export default {
             onUploadProgress: progressEvent => this.updateProgress(progressEvent)
           })
           .then(response => {
-            console.log(response);
             this.avatarFilename = response.data.filename;
           })
     }

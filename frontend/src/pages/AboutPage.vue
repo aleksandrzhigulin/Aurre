@@ -6,7 +6,7 @@
   <div class="container">
     <div class="about">
       <div class="about__avatar">
-        <img src="http://localhost:8080/files/get/a67661f3-5ea8-488e-bcde-bdeb8b140d88ancat.jpg" alt="">
+        <img src="http://localhost:8080/files/get/c7cd0fc0-2899-4d77-860d-fb9e22bc2b8a1005x558_20210625110546dc4c390f3d.jpg" alt="">
       </div>
       <div class="about__info">
         <h1 class="name">Aleksandr Zhigulin</h1>
