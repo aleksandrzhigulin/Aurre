@@ -22,6 +22,8 @@ public class Post {
   @ManyToMany
   private List<PostComponent> components;
 
+  private String status; // draft, publish
+
   public Long getId() {
     return id;
   }
@@ -47,15 +49,11 @@ public class Post {
     this.author = null;
   }
 
-  public Post(String title) {
-    this.title = title;
-    this.author = "unknown";
-  }
-
   public Post(String title, String author) {
     this.title = title;
     this.author = author;
     this.components = new ArrayList<>();
+    this.status = "draft";
   }
 
   public Post(String title, String author, List<PostComponent> components) {
@@ -70,6 +68,14 @@ public class Post {
 
   public void setComponents(List<PostComponent> components) {
     this.components = components;
+  }
+
+  public String getStatus() {
+    return status;
+  }
+
+  public void setStatus(String status) {
+    this.status = status;
   }
 
   @Override
