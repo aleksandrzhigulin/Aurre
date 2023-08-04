@@ -9,6 +9,8 @@ public class PostRequest {
 
   private String author;
 
+  private String preview;
+
   private List<PostComponent> components;
 
   public String getAuthor() {
@@ -43,9 +45,18 @@ public class PostRequest {
     this.components = components;
   }
 
-  public PostRequest(String title, String author, List<PostComponent> components) {
+  public String getPreview() {
+    return preview;
+  }
+
+  public void setPreview(String preview) {
+    this.preview = preview;
+  }
+
+  public PostRequest(String title, String author, List<PostComponent> components, String preview) {
     this.title = title;
     this.author = author;
     this.components = components;
+    this.preview = preview;
   }
 }

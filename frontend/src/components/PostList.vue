@@ -8,7 +8,7 @@
             </div>
             <div class="post__body">
                 <div class="post__image">
-                    <img src="../image/newyork.jpg" alt="">
+                    <img :src="'http://localhost:8080/files/get/' + post.preview" alt="">
                 </div> 
             </div>
             <div class="post__footer">

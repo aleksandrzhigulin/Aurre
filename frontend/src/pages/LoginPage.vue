@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <!-- TODO: FIX SIGN IN/SIGN UP SELECTING BUG -->
         <LoginForm></LoginForm>
     </div>
     

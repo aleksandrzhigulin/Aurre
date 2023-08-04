@@ -57,11 +57,12 @@ public class PostController {
       throws JsonProcessingException {
     String title = postRequest.getTitle();
     String author = postRequest.getAuthor();
+    String preview = postRequest.getPreview();
     List<PostComponent> postComponents = postRequest.getComponents();
     for (PostComponent component : postComponents) {
       postComponentRepository.save(component);
     }
-    Post post = postRepository.save(new Post(title, author, postComponents));
+    Post post = postRepository.save(new Post(title, author, postComponents, preview));
     String json = objectMapper.writeValueAsString(post);
     return ResponseEntity.ok(json);
   }

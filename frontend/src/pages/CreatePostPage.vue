@@ -55,7 +55,8 @@ export default {
             url: null,
             components: [],
             componentsAmount: 0,
-            author: ""
+            author: "",
+            previewFilename: ""
         }
     },
     components: {
@@ -68,6 +69,10 @@ export default {
     onFileChange(e) {
       const file = e.target.files[0];
       this.url = URL.createObjectURL(file);
+      this.axios.postForm("http://localhost:8080/files/upload", {
+        file: e.target.files[0]
+      })
+          .then(response => (this.previewFilename = response.data.filename))
     },
     myFunction() {
       document.getElementById("myDropdown").classList.toggle("show");
@@ -100,7 +105,8 @@ export default {
       this.axios.post("http://localhost:8080/posts/create", {
         title: this.title,
         author: this.author,
-        components: this.components
+        components: this.components,
+        preview: this.previewFilename
       });
     },
 

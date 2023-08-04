@@ -24,6 +24,16 @@ public class Post {
 
   private String status; // draft, publish
 
+  private String preview;
+
+  public String getPreview() {
+    return preview;
+  }
+
+  public void setPreview(String preview) {
+    this.preview = preview;
+  }
+
   public Long getId() {
     return id;
   }
@@ -56,10 +66,11 @@ public class Post {
     this.status = "draft";
   }
 
-  public Post(String title, String author, List<PostComponent> components) {
+  public Post(String title, String author, List<PostComponent> components, String preview) {
     this.title = title;
     this.author = author;
     this.components = components;
+    this.preview = preview;
   }
 
   public List<PostComponent> getComponents() {
