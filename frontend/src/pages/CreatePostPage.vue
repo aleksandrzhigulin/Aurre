@@ -2,12 +2,12 @@
     <div class="container newPost" id="create_post_page">
         <form @submit.prevent>
             <div class="post-create__element">
-              <p class="post-create__element-header">Title</p>
+              <p class="post-create__element-header">Title <span class="required">*</span></p>
               <input type="text" class="text__input" v-model="title">
             </div>
 
            <div class="post-create__element">
-            <p class="post-create__element-header">Preview</p>
+            <p class="post-create__element-header">Preview <span class="required">*</span></p>
              <label class="upload__label">
                <input type="file" accept="image/*" @change="onFileChange">
                <p>Choose a file</p>
