@@ -11,6 +11,7 @@
       <div class="about__info">
         <h1 class="name">Aleksandr Zhigulin</h1>
         <div class="links">
+          <a href="http://localhost:8080/files/get/CVFinal.pdf">CV</a>
           <a href="https://github.com/payl0adk" target="_blank">Github</a>
           <a href="https://www.linkedin.com/in/ancapybara/" target="_blank">Linkedin</a>
           <a href="https://t.me/fleasc" target="_blank">Telegram</a>
@@ -22,6 +23,20 @@
             molestias quam quod repellendus similique sunt ullam voluptate.
             Illo necessitatibus obcaecati placeat?</p>
         </div>
+      </div>
+    </div> <!-- about -->
+
+    <div class="additional__info">
+      <div class="info__block">
+        <p class="header">Education</p>
+        <p class="body">Nizhny Novgorod State Technical University (2023-2027)</p>
+        <p class="body-extra">Information systems and technologies</p>
+      </div>
+
+      <div class="info__block">
+        <p class="header">Technologies</p>
+        <p class="body">Java, Spring, Hibernate, JavaFX, Docker, PostgreSQL,
+          Python, Kotlin, HTML, CSS, Git, Bash, VueJS</p>
       </div>
     </div>
   </div>

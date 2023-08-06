@@ -600,6 +600,34 @@ form * {
   margin-right: 15px;
 }
 
+.additional__info {
+  border-radius: 15px;
+  background-color: #FFFFFF;
+  padding: 20px;
+  margin-top: 20px;
+}
+.additional__info .info__block {
+  margin-bottom: 20px;
+}
+.additional__info .info__block .header {
+  font-weight: bold;
+  font-size: 26px;
+  line-height: 30px;
+}
+.additional__info .info__block .body {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.additional__info .info__block .body-extra {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 300;
+}
+.additional__info .info__block:last-child {
+  margin-bottom: 0;
+}
+
 .comments {
   display: flex;
   flex-direction: column-reverse;
