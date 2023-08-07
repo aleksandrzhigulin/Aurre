@@ -3,6 +3,19 @@
 </script>
 
 <template>
+  <div class="menu-left">
+    <div class="info__block">
+      <p class="header">Education</p>
+      <p class="body">Nizhny Novgorod State Technical University (2023-2027)</p>
+      <p class="body-extra">Information systems and technologies</p>
+    </div>
+
+    <div class="info__block">
+      <p class="header">Technologies</p>
+      <p class="body">Java, Spring, Hibernate, JavaFX, Docker, PostgreSQL,
+        Python, Kotlin, HTML, CSS, Git, Bash, VueJS</p>
+    </div>
+  </div>
   <div class="container">
     <div class="about">
       <div class="about__avatar">
@@ -28,15 +41,9 @@
 
     <div class="additional__info">
       <div class="info__block">
-        <p class="header">Education</p>
-        <p class="body">Nizhny Novgorod State Technical University (2023-2027)</p>
-        <p class="body-extra">Information systems and technologies</p>
-      </div>
-
-      <div class="info__block">
-        <p class="header">Technologies</p>
-        <p class="body">Java, Spring, Hibernate, JavaFX, Docker, PostgreSQL,
-          Python, Kotlin, HTML, CSS, Git, Bash, VueJS</p>
+        <p class="header">Experience</p>
+        <p class="body">Aurre</p>
+        <p class="body-extra">Social network for travelers</p>
       </div>
     </div>
   </div>
