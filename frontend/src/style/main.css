@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap");
 *, *:before, *:after {
   box-sizing: border-box;
 }
@@ -565,6 +565,7 @@ form * {
 .about__info h1 {
   font-size: 32px;
   line-height: 36px;
+  font-weight: 500;
 }
 .about__info .links {
   display: flex;
@@ -580,13 +581,14 @@ form * {
   flex-direction: column;
 }
 .about__info .about-text .header {
-  font-weight: bold;
+  font-weight: 500;
   line-height: 24px;
   font-size: 18px;
 }
 .about__info .about-text .paragraph {
   opacity: 0.7;
   font-size: 18px;
+  font-weight: 300;
 }
 
 .about__avatar, .about__avatar img {
@@ -634,28 +636,31 @@ form * {
   position: fixed;
   padding: 10px;
   background: #FFFFFF;
-  border-radius: 15px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
   display: flex;
   flex-direction: column;
-  max-width: 380px;
-  margin-left: 20px;
+  max-width: 20%;
 }
 .menu-left .info__block {
   margin-bottom: 0;
   padding-bottom: 10px;
   padding-top: 10px;
-  border-top: 3px solid black;
+  border-top: 3px solid #303637;
 }
 .menu-left .info__block .header {
-  font-size: 22px;
-  line-height: 26px;
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 500;
 }
 .menu-left .info__block .body {
+  font-weight: 400;
   font-size: 16px;
   line-height: 20px;
 }
 .menu-left .info__block .body-extra {
   font-size: 16px;
+  font-weight: 300;
   line-height: 18px;
 }
 .menu-left .info__block:first-child {

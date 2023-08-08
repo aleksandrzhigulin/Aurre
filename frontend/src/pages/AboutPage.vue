@@ -12,7 +12,7 @@
 
     <div class="info__block">
       <p class="header">Technologies</p>
-      <p class="body">Java, Spring, Hibernate, JavaFX, Docker, PostgreSQL,
+      <p class="body-extra">Java, Spring, Hibernate, JavaFX, Docker, PostgreSQL,
         Python, Kotlin, HTML, CSS, Git, Bash, VueJS</p>
     </div>
   </div>
