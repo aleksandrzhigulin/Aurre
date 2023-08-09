@@ -631,46 +631,6 @@ form * {
   font-weight: 300;
 }
 
-.menu-left {
-  margin-top: 20px;
-  position: fixed;
-  padding: 10px;
-  background: #FFFFFF;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  max-width: 20%;
-}
-.menu-left .info__block {
-  margin-bottom: 0;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  border-top: 3px solid #303637;
-}
-.menu-left .info__block .header {
-  font-size: 18px;
-  line-height: 20px;
-  font-weight: 500;
-}
-.menu-left .info__block .body {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 20px;
-}
-.menu-left .info__block .body-extra {
-  font-size: 16px;
-  font-weight: 300;
-  line-height: 18px;
-}
-.menu-left .info__block:first-child {
-  border: none;
-  padding-top: 0;
-}
-.menu-left .info__block:last-child {
-  padding-bottom: 0;
-}
-
 .comments {
   display: flex;
   flex-direction: column-reverse;
