@@ -5,8 +5,24 @@ import { axiosInstance } from './plugins/axios';
 import VueCookies from 'vue-cookies';
 import Toast, {useToast} from "vue-toastification";
 import "vue-toastification/dist/index.css";
+import {createStore} from "vuex";
 
-
+const store = createStore({
+    state() {
+        return {
+            isAuthorized: false,
+            username: ""
+        }
+    },
+    mutations: {
+        setIsAuthorized(state, status) {
+            state.isAuthorized = status;
+        },
+        setUsername(state, nickname) {
+            state.username = nickname;
+        }
+    }
+})
 const options = {
     position: "bottom-right",
     timeout: 3000,
@@ -25,6 +41,7 @@ const app = createApp(App)
 
 app.config.globalProperties.axios=axiosInstance
 app
+    .use(store)
     .use(router)
     .use(Toast, options)
     .use(VueCookies)
