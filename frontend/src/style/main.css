@@ -572,8 +572,7 @@ form * {
 }
 .about__info .links a {
   margin-right: 15px;
-  color: #303637;
-  opacity: 0.5;
+  color: black;
 }
 .about__info .about-text {
   margin-top: 10px;

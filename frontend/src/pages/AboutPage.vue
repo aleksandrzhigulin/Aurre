@@ -31,6 +31,7 @@
         <p class="header">Experience</p>
         <p class="body">Aurre</p>
         <p class="body-extra">Social network for travelers</p>
+        <p class="body-extra">Stack: Java, Spring, VueJS, Hibernate, PostgreSQL, HTML & CSS, JS</p>
       </div>
       <div class="info__block">
         <p class="header">Education</p>
