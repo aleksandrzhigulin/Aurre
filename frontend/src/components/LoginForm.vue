@@ -2,10 +2,10 @@
     <div class="forms">
         <div class="tabs">
            <div class="tab">
-                <a href="#signin" data-tab="signin" class="first__tab b-nav-tab active">Sign in</a>
+                <a data-tab="signin" class="first__tab b-nav-tab active">Sign in</a>
            </div>
            <div class="tab">
-                <a href="#signup" data-tab="signup" class="last__tab b-nav-tab">Sign up</a> 
+                <a data-tab="signup" class="last__tab b-nav-tab">Sign up</a>
            </div>
         </div>
         
@@ -129,4 +129,7 @@ var connectTabs = new Tabs();
 </script>
 
 <style scoped>
+a {
+  cursor: pointer;
+}
 </style>
