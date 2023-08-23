@@ -5,9 +5,6 @@
 <template>
   <div class="container">
     <div class="about">
-      <div class="about__avatar">
-        <img src="http://localhost:8080/files/get/c7cd0fc0-2899-4d77-860d-fb9e22bc2b8a1005x558_20210625110546dc4c390f3d.jpg" alt="">
-      </div>
       <div class="about__info">
         <h1 class="name">Aleksandr Zhigulin</h1>
         <div class="links">
