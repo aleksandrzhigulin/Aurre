@@ -1,5 +1,6 @@
 package com.ancapybara.aurre.Post;
 
+import com.ancapybara.aurre.Services.PostService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,29 +8,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Optional;
 
-@RestController
+@RestController("postControllerClass")
 @CrossOrigin(origins = "http://localhost:8081")
 public class PostController {
+  private final PostService postService;
 
-  @Autowired
-  ObjectMapper objectMapper = new ObjectMapper();
-  @Autowired
-  private PostService postService;
-  @Autowired
-  private PostRepository postRepository;
+  private final ObjectMapper objectMapper;
 
-  @Autowired
-  private PostJPARepository postJPARepository;
-
-  @Autowired
-  private PostComponentRepository postComponentRepository;
 
   @GetMapping("/posts/get/all")
   public ResponseEntity<String> getAllPosts() throws JsonProcessingException {
-    Iterable<Post> posts = postRepository.findAll();
+    Iterable<Post> posts = postService.getAllPosts();
     String json = objectMapper.writeValueAsString(posts);
     return ResponseEntity.ok(json);
   }
@@ -37,14 +28,14 @@ public class PostController {
   @GetMapping("/posts/get/author/{author}")
   public ResponseEntity<?> getAllPostsByAuthor(@PathVariable("author") String author)
       throws JsonProcessingException {
-    List<Post> posts = postJPARepository.findAllByAuthor(author);
+    Iterable<Post> posts = postService.getAllPostsByAuthor(author);
     String json = objectMapper.writeValueAsString(posts);
     return ResponseEntity.ok(json);
   }
 
   @GetMapping("/posts/get/{id}")
   public ResponseEntity<String> getPostById(@PathVariable Long id) throws JsonProcessingException {
-    Optional<Post> post = postRepository.findById(id);
+    Optional<Post> post = postService.getPostById(id);
     if (post.isPresent()) {
       String json = objectMapper.writeValueAsString(post);
       return ResponseEntity.ok(json);
@@ -55,25 +46,24 @@ public class PostController {
   @PostMapping("/posts/create")
   public ResponseEntity<String> createPost(@RequestBody PostRequest postRequest)
       throws JsonProcessingException {
-    String title = postRequest.getTitle();
-    String author = postRequest.getAuthor();
-    String preview = postRequest.getPreview();
-    List<PostComponent> postComponents = postRequest.getComponents();
-    for (PostComponent component : postComponents) {
-      postComponentRepository.save(component);
-    }
-    Post post = postRepository.save(new Post(title, author, postComponents, preview));
+
+    Post post = postService.createPost(postRequest);
     String json = objectMapper.writeValueAsString(post);
     return ResponseEntity.ok(json);
   }
 
   @DeleteMapping("/posts/delete/{id}")
   public ResponseEntity<?> deletePost(@PathVariable("id") Long id) {
-    Optional<Post> post = postRepository.findById(id);
-    if (post.isEmpty()) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    Boolean isDeleted = postService.deletePostById(id);
+    if (isDeleted) {
+      return ResponseEntity.ok("Success");
     }
-    postRepository.delete(post.get());
-    return ResponseEntity.ok("Success");
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+  }
+
+  @Autowired
+  public PostController(PostService postService, ObjectMapper objectMapper) {
+    this.postService = postService;
+    this.objectMapper = objectMapper;
   }
 }
