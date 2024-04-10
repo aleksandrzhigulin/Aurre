@@ -1,6 +1,6 @@
 package com.ancapybara.aurre;
 
-import com.ancapybara.aurre.Security.RsaProperties;
+import com.ancapybara.aurre.security.config.RsaProperties;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

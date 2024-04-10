@@ -10,11 +10,11 @@
 	</parent>
 	<groupId>com.ancapybara</groupId>
 	<artifactId>aurre</artifactId>
-	<version>1.0</version>
-	<name>aurre</name>
+	<version>0.1</version>
+	<name>webblog</name>
 	<description>Social network for travelers</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>21</java.version>
 		<spring-security.version>6.1.1</spring-security.version>
 	</properties>
 	<dependencies>

@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build: backend
+    ports:
+      - 8080:8080
+    networks:
+      - spring-postgres
+    depends_on:
+      database:
+        condition: service_healthy
+
+  database:
+    image: postgres:16
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - spring-postgres
+    environment:
+      - POSTGRES_DB=kursovaya
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+    expose:
+      - 5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+volumes:
+  db-data:
+
+networks:
+  spring-postgres:

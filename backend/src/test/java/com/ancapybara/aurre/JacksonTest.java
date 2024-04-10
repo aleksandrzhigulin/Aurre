@@ -1,6 +1,6 @@
 package com.ancapybara.aurre;
 
-import com.ancapybara.aurre.Post.Post;
+import com.ancapybara.aurre.domain.entity.Post;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
